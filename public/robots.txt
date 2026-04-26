@@ -1,2 +1,7 @@
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /admin
+Disallow: /portal
+Disallow: /livewire
+
+Sitemap: https://www.somameat.com/sitemap.xml

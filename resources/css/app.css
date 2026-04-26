@@ -6,6 +6,119 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+  /* ── Marca y acción — paleta v2 ── */
+  --color-primary:       #A81E2A;
+  --color-primary-dark:  #7A1219;
+  --color-primary-deep:  #5C0E15;
+  --color-brown:         #3A1E18;
+
+  /* ── Tinta ── */
+  --color-ink:           #0F0F0F;
+  --color-ink-mid:       #1F2024;
+  --color-ink-soft:      #6B7280;
+  --color-mute:          #6B7280;
+
+  /* ── Fondos ── */
+  --color-bone:          #FCFCFB;
+  --color-bone-soft:     #F7F7F5;
+  --color-cream:         #F3EFE4;
+  --color-pearl:         #F2F2EE;
+  --color-white:         #FFFFFF;
+
+  /* ── Acentos ── */
+  --color-copper:        #B8743A;
+  --color-evergreen:     #2E5147;
+
+  /* ── Verificación / inocuidad ── */
+  --color-verify:        #15803D;
+  --color-verify-soft:   #DCFCE7;
+  --color-verify-live:   #22C55E;
+
+  /* ── Líneas ── */
+  --color-line:          #E5E7EB;
+  --color-line-soft:     #F0F1F3;
+  --color-line-strong:   #D1D5DB;
+
+  /* ── Tipografía ── */
+  --font-display:   'Bricolage Grotesque', 'Cormorant Garamond', Georgia, serif;
+  --font-sans:      'Inter Tight', 'Inter', system-ui, sans-serif;
+  --font-mono:      'IBM Plex Mono', 'JetBrains Mono', monospace;
+  --font-fraunces:  'Fraunces', Georgia, serif;
+
+  /* ── Sombras ── */
+  --shadow-sm:    0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md:    0 2px 8px rgba(0,0,0,0.06);
+  --shadow-lg:    0 12px 32px rgba(0,0,0,0.12);
+  --shadow-focus: 0 0 0 3px rgba(168,30,42,0.25);
+
+  /* ── Radios ── */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   20px;
+  --radius-full: 9999px;
 }
+
+@layer base {
+  body {
+    @apply bg-bone text-ink font-sans antialiased;
+    font-variant-numeric: tabular-nums;
+  }
+
+  h1, h2, h3 {
+    @apply font-display tracking-tight;
+    letter-spacing: -0.02em;
+  }
+
+  *:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+  }
+}
+
+@layer components {
+  .container-soma {
+    @apply max-w-[1280px] mx-auto px-6 md:px-10;
+  }
+}
+
+/* ── Animaciones de entrada ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.45s ease both;
+}
+
+.anim-delay-1 { animation-delay: 0.08s; }
+.anim-delay-2 { animation-delay: 0.16s; }
+.anim-delay-3 { animation-delay: 0.24s; }
+.anim-delay-4 { animation-delay: 0.32s; }
+
+.will-animate {
+  opacity: 0;
+}
+
+/* WhatsApp flotante */
+@keyframes wa-bob {
+  0%, 100% { transform: translateY(0);    }
+  50%       { transform: translateY(-5px); }
+}
+@keyframes wa-ring {
+  0%   { transform: scale(1);   opacity: 0.35; }
+  100% { transform: scale(1.5); opacity: 0;    }
+}
+
+.wa-ring       { animation: wa-ring 6s ease-out infinite; }
+.wa-ring-delay { animation: wa-ring 6s ease-out infinite 3s; }
